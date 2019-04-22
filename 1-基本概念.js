@@ -87,3 +87,28 @@ let map = new Map([["a", 1], ["b", 2], ["c", 3]]);
 for (let entry of map) {
 	console.log(entry);
 }
+
+// ========================================================================================
+function dynamicArgs() {
+	console.log(arguments);
+	for (let arg of arguments) {
+		console.log(arg);
+	}
+}
+
+dynamicArgs(1, 2, 3, "hello", "world");
+
+// ========================================================================================
+// Overloading
+function overloaded() {
+	if (arguments.length == 1) {
+		console.log(arguments[0] + 10);
+	} else if (arguments.length == 2) {
+		console.log(arguments[0] + arguments[1]);
+	} else {
+		console.log("invalid parameters");
+	}
+}
+
+overloaded(1);
+overloaded(1, 2);

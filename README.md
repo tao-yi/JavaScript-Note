@@ -215,3 +215,40 @@ for (let i of iterable) {
 ```
 
 由上可以看出，`for...in` 遍历的包括原型对象上的属性，而 `for...of`只会遍历当前对象本身的属性。
+
+---
+
+### 函数
+
+ECMAScript 中的函数不介意传递进来多少个参数，也不在乎传进来参数是什么数据类型。即使你定义的函数只接受两个参数，在调用时你可以不传参数，也可以传三个参数，解析器不会报错。原因是因为参数在内部是用一个数组表示的。
+
+```js
+function dynamicArgs() {
+	console.log(arguments); //是一个对象或者伪数组 [Arguments] { '0': 1, '1': 2, '2': 3, '3': 'hello', '4': 'world' }
+	// 无法用 for...in 进行遍历
+	for (let arg of arguments) {
+		console.log(arg);
+	}
+}
+
+dynamicArgs(1, 2, 3, "hello", "world");
+```
+
+#### 函数的重载
+
+```js
+function overloaded() {
+	if (arguments.length == 1) {
+		console.log(arguments[0] + 10);
+	} else if (arguments.length == 2) {
+		console.log(arguments[0] + arguments[1]);
+	} else {
+		console.log("invalid parameters");
+	}
+}
+
+overloaded(1);
+overloaded(1, 2);
+```
+
+虽然算不上完美的重载，但是利用这个特性也弥补了 ECMAScript 的这一缺陷。通过检查传入函数中的类型和数量并作出不同的反应，可以模拟重载的效果。
