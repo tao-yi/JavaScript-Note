@@ -351,3 +351,87 @@ numbers.sort(compare);
 
 console.log(numbers);
 ```
+
+#### flat
+
+`flat()` 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+
+```js
+const arr1 = [1, 2, [3, 4, [5, 6, 7]]];
+const arr2 = arr1.flat(1);
+const arr3 = arr1.flat(2);
+console.log(arr2); // [ 1, 2, 3, 4, [ 5, 6, 7 ] ]
+console.log(arr3); // [ 1, 2, 3, 4, 5, 6, 7 ]
+```
+
+`flat()` 方法会移除数组中的空项:
+
+```js
+const arr4 = [1, 2, , 4, 5, , 6];
+const arr5 = arr4.flat();
+console.log(arr5); // [ 1, 2, 4, 5, 6 ]
+```
+
+#### every
+
+`every()` 方法测试数组的所有元素是否都通过了指定函数的测试。
+
+```js
+function isBigEnough(element, index, array) {
+	return element >= 10;
+}
+var passed = [12, 5, 8, 130, 44].every(isBigEnough);
+// passed is false
+passed = [12, 54, 18, 130, 44].every(isBigEnough);
+```
+
+#### reduce
+
+`reduce()` 方法对数组中的每个元素执行一个由您提供的 reducer 函数(升序执行)，将其结果汇总为单个返回值。
+
+reducer 函数接收 4 个参数:
+
+- Accumulator (acc) (累计器)
+- Current Value (cur) (当前值)
+- Current Index (idx) (当前索引)
+- Source Array (src) (源数组)
+
+```js
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer, 5)); // 5 是initialValue
+// expected output: 15
+```
+
+> 回调函数第一次执行时，accumulator 和 currentValue 的取值有两种情况：如果调用 `reduce()`时提供了 initialValue，accumulator 取值为 initialValue，currentValue 取数组中的第一个值；如果没有提供 initialValue，那么 accumulator 取数组中的第一个值，currentValue 取数组中的第二个值。
+
+```js
+var initialValue = 0;
+var sum = [{ x: 1 }, { x: 2 }, { x: 3 }].reduce(function(accumulator, currentValue) {
+	return accumulator + currentValue.x;
+}, initialValue);
+
+console.log(sum); // logs 6
+```
+
+#### some
+
+`some()` 方法测试是否至少有一个元素通过由提供的函数实现的测试。
+
+```js
+var array = [1, 2, 3, 4, 5];
+
+var even = function(element) {
+	// checks whether an element is even
+	return element % 2 === 0;
+};
+
+console.log(array.some(even));
+// expected output: true
+```
