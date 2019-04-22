@@ -1,6 +1,19 @@
 # JavaScript 面试准备
 
-autoauto- [JavaScript 面试准备](#javascript-面试准备)auto - [数据类型](#数据类型)auto - [undefined vs null](#undefined-vs-null)auto - [Number 类型](#number-类型)auto - [NaN](#nan)auto - [parseInt()](#parseint)auto - [String](#string)auto - [`toString()` vs `String()`](#tostring-vs-string)auto - [`Object` 类型](#object-类型)auto - [运算符](#运算符)auto - [相等性](#相等性)auto - [`for-in` vs `for-of`](#for-in-vs-for-of)auto - [函数](#函数)auto - [函数的重载](#函数的重载)autoauto<!-- /TOC -->
+- [JavaScript 面试准备](#javascript-面试准备)
+- [数据类型](#数据类型)
+- [undefined vs null](#undefined-vs-null)
+- [Number 类型](#number-类型)
+  - [NaN](#nan)
+  - [parseInt()](#parseint)
+  - [String](#string)
+  - [`toString()` vs `String()`](#tostring-vs-string)
+  - [`Object` 类型](#object-类型)
+  - [运算符](#运算符)
+  - [相等性](#相等性)
+  - [`for-in` vs `for-of`](#for-in-vs-for-of)
+  - [函数](#函数)
+  - [函数的重载](#函数的重载)
 
 #### 数据类型
 
@@ -254,3 +267,87 @@ overloaded(1, 2);
 ```
 
 虽然算不上完美的重载，但是利用这个特性也弥补了 ECMAScript 的这一缺陷。通过检查传入函数中的类型和数量并作出不同的反应，可以模拟重载的效果。
+
+### 变量作用域和内存问题
+
+在将一个值赋给变量时，解析器必须确定这个值是基本类型值还是引用类型值。
+
+> 在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的，JavaScript 放弃了这一传统。
+
+#### 执行环境以及作用域
+
+- 指向环境定义了变量或函数有权访问的其他数据。
+- 每个执行环境都有一个与之关联的**变量对象**，环境中定义的所有变量和函数都保存在这个对象中。
+- 全局执行环境是最外层的一个执行环境，在浏览器中是 window 对象，在 node 中是 global 对象。所有的全局变量和函数都是作为 window/global 的属性和方法创建的。
+- 某个执行环境中的代码执行完毕后，保存在其中的所有变量和函数定义也随之销毁。
+- **每个函数都有自己的执行环境，当函数被调用的时候，就会创建出一个函数执行环境**。
+
+#### 没有块级作用域！
+
+```js
+if (true) {
+	var color = "blue";
+}
+console.log(color); // "blue"
+
+for (var i = 0; i < 10; i++) {
+	doSomething(i);
+}
+
+console.log(i); // 10
+```
+
+if 语句中的变量声明会将变量添加到当前的执行环境中。
+
+> 使用 var 声明的变量会自动被添加到最接近的执行环境中。
+
+---
+
+### 引用类型
+
+#### `isArray()`
+
+ECMAScript5 新增了一个方法 `Array.isArray()` 方法用来确定一个值是不是数组。
+
+#### 栈方法
+
+LIFO: Last In First Out
+
+- `push()` 添加到数组末尾，并返回修改后的数组长度
+- `pop()` 移除数组最后一个元素，并返回这个元素
+
+#### 队列方法
+
+FIFO: First In First Out
+
+- `push()` 添加到数组末尾，并返回修改后的数组长度
+- `shift()` 移除数组中的第一个元素，并返回它
+- `unshift(firstElement)` 将一个元素添加到数组的头部，并返回数组长度
+
+#### 排序
+
+```js
+const numbers = [0, 1, 5, 10, 15];
+
+numbers.sort();
+console.log(numbers); // [ 0, 1, 10, 15, 5 ] 因为默认按照字符串编码来进行排序
+```
+
+`sort()` 方法会根据测试字符串的结果改变原来的顺序，"10" 位于 "5" 的前面。不过，它可以接受一个比较函数作为参数，以便我们自定义排序的规则。
+
+```js
+// 从小到大排序
+function compare(value1, value2) {
+	if (value1 > value2) {
+		return 1; // 1表示放后面
+	} else if (value1 === value2) {
+		return 0;
+	} else {
+		return -1;
+	}
+}
+
+numbers.sort(compare);
+
+console.log(numbers);
+```
