@@ -11,7 +11,7 @@ console.log(arr5); // [ 1, 2, 4, 5, 6 ]
 console.log("==================================");
 
 function isBelowThreshold(currentValue) {
-	return currentValue < 40;
+  return currentValue < 40;
 }
 
 var array1 = [1, 30, 39, 29, 10, 13];
@@ -34,12 +34,12 @@ console.log(array2.reduce(reducer, 5));
 var names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
 
 const countedNames = names.reduce((allNames, currentName) => {
-	if (currentName in allNames) {
-		allNames[currentName]++;
-	} else {
-		allNames[currentName] = 1;
-	}
-	return allNames;
+  if (currentName in allNames) {
+    allNames[currentName]++;
+  } else {
+    allNames[currentName] = 1;
+  }
+  return allNames;
 }, {});
 
 console.log(countedNames);
