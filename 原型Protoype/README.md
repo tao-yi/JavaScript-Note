@@ -78,3 +78,83 @@ F.prototype.c = 4;
 ```
 
 ![image](./inheritance.png)
+
+##### 普通对象继承
+
+```js
+// o 这个对象继承了 Object.prototype 上面的所有属性
+var o = { a: 1 };
+
+// o 自身没有名为 hasOwnProperty 的属性
+// hasOwnProperty 是 Object.prototype 的属性
+// 因此 o 继承了 Object.prototype 的 hasOwnProperty
+// Object.prototype 的原型为 null
+// 原型链如下:
+// o ---> Object.prototype ---> null
+```
+
+##### 数组继承
+
+```js
+var a = ["yo", "whadup", "?"];
+
+// 数组都继承于 Array.prototype
+// (Array.prototype 中包含 indexOf, forEach 等方法)
+// 原型链如下:
+// a ---> Array.prototype ---> Object.prototype ---> null
+```
+
+##### 函数继承
+
+```js
+// 函数都继承于 Function.prototype
+function f() {
+  return 2;
+}
+
+// (Function.prototype 中包含 call, bind等方法)
+// 原型链如下:
+// f ---> Function.prototype ---> Object.prototype ---> null
+```
+
+### 继承完整案例
+
+```js
+// 父类A
+function A(a) {
+  this.varA = a;
+}
+
+// 子类B继承于父类A
+function B(a, b) {
+  A.call(this, a);
+  this.varB = b;
+}
+
+// 修改B的原型，让其能够继承A的原型中的所有成员
+B.prototype = Object.create(A.prototype, {
+  varB: {
+    value: null,
+    enumerable: true,
+    configurable: true,
+    writable: true
+  },
+  doSomething: {
+    value: function() {
+      // override
+      A.prototype.doSomething.apply(this, arguments);
+      // call super
+      // ...
+    },
+    enumerable: true,
+    configurable: true,
+    writable: true
+  }
+});
+
+// 别忘了修改B的原型的构造函数的指向，从A改为B
+B.prototype.constructor = B;
+
+var b = new B();
+b.doSomething();
+```
