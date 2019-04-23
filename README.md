@@ -57,7 +57,7 @@ var floatNum2 = 10.0; // 整数，解析为10
 ```js
 // 永远不要测试某个特定的浮点数值
 if (a + b == 0.3) {
-	console.log("yes");
+  console.log("yes");
 }
 ```
 
@@ -170,7 +170,7 @@ console.log(5 == true); // false
 ```js
 // for-in 用来枚举对象的属性，不要用来遍历数组
 for (let key in obj) {
-	console.log(`${key}: ${obj[key]}`);
+  console.log(`${key}: ${obj[key]}`);
 }
 ```
 
@@ -181,8 +181,8 @@ for (let key in obj) {
 ```js
 let iterable = [10, 20, 30];
 for (let value of iterable) {
-	value += 1;
-	console.log(value);
+  value += 1;
+  console.log(value);
 }
 ```
 
@@ -191,7 +191,7 @@ for (let value of iterable) {
 ```js
 let str = "abcdefg";
 for (let value of str) {
-	console.log(value);
+  console.log(value);
 }
 ```
 
@@ -201,7 +201,7 @@ for (let value of str) {
 let iterable = new Map([["a", 1], ["b", 2], ["c", 3]]);
 
 for (let entry of iterable) {
-	console.log(entry);
+  console.log(entry);
 }
 ```
 
@@ -215,17 +215,17 @@ let iterable = [3, 5, 7];
 iterable.foo = "hello";
 
 for (let i in iterable) {
-	console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
+  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
 }
 
 for (let i in iterable) {
-	if (iterable.hasOwnProperty(i)) {
-		console.log(i); // logs 0, 1, 2, "foo"
-	}
+  if (iterable.hasOwnProperty(i)) {
+    console.log(i); // logs 0, 1, 2, "foo"
+  }
 }
 
 for (let i of iterable) {
-	console.log(i); // logs 3, 5, 7
+  console.log(i); // logs 3, 5, 7
 }
 ```
 
@@ -239,11 +239,11 @@ ECMAScript 中的函数不介意传递进来多少个参数，也不在乎传进
 
 ```js
 function dynamicArgs() {
-	console.log(arguments); //是一个对象或者伪数组 [Arguments] { '0': 1, '1': 2, '2': 3, '3': 'hello', '4': 'world' }
-	// 无法用 for...in 进行遍历
-	for (let arg of arguments) {
-		console.log(arg);
-	}
+  console.log(arguments); //是一个对象或者伪数组 [Arguments] { '0': 1, '1': 2, '2': 3, '3': 'hello', '4': 'world' }
+  // 无法用 for...in 进行遍历
+  for (let arg of arguments) {
+    console.log(arg);
+  }
 }
 
 dynamicArgs(1, 2, 3, "hello", "world");
@@ -253,13 +253,13 @@ dynamicArgs(1, 2, 3, "hello", "world");
 
 ```js
 function overloaded() {
-	if (arguments.length == 1) {
-		console.log(arguments[0] + 10);
-	} else if (arguments.length == 2) {
-		console.log(arguments[0] + arguments[1]);
-	} else {
-		console.log("invalid parameters");
-	}
+  if (arguments.length == 1) {
+    console.log(arguments[0] + 10);
+  } else if (arguments.length == 2) {
+    console.log(arguments[0] + arguments[1]);
+  } else {
+    console.log("invalid parameters");
+  }
 }
 
 overloaded(1);
@@ -286,12 +286,12 @@ overloaded(1, 2);
 
 ```js
 if (true) {
-	var color = "blue";
+  var color = "blue";
 }
 console.log(color); // "blue"
 
 for (var i = 0; i < 10; i++) {
-	doSomething(i);
+  doSomething(i);
 }
 
 console.log(i); // 10
@@ -338,13 +338,13 @@ console.log(numbers); // [ 0, 1, 10, 15, 5 ] 因为默认按照字符串编码�
 ```js
 // 从小到大排序
 function compare(value1, value2) {
-	if (value1 > value2) {
-		return 1; // 1表示放后面
-	} else if (value1 === value2) {
-		return 0;
-	} else {
-		return -1;
-	}
+  if (value1 > value2) {
+    return 1; // 1表示放后面
+  } else if (value1 === value2) {
+    return 0;
+  } else {
+    return -1;
+  }
 }
 
 numbers.sort(compare);
@@ -378,7 +378,7 @@ console.log(arr5); // [ 1, 2, 4, 5, 6 ]
 
 ```js
 function isBigEnough(element, index, array) {
-	return element >= 10;
+  return element >= 10;
 }
 var passed = [12, 5, 8, 130, 44].every(isBigEnough);
 // passed is false
@@ -414,7 +414,7 @@ console.log(array1.reduce(reducer, 5)); // 5 是initialValue
 ```js
 var initialValue = 0;
 var sum = [{ x: 1 }, { x: 2 }, { x: 3 }].reduce(function(accumulator, currentValue) {
-	return accumulator + currentValue.x;
+  return accumulator + currentValue.x;
 }, initialValue);
 
 console.log(sum); // logs 6
@@ -428,8 +428,8 @@ console.log(sum); // logs 6
 var array = [1, 2, 3, 4, 5];
 
 var even = function(element) {
-	// checks whether an element is even
-	return element % 2 === 0;
+  // checks whether an element is even
+  return element % 2 === 0;
 };
 
 console.log(array.some(even));
