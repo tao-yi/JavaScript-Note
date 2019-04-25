@@ -1,6 +1,21 @@
 # JavaScript 面试准备
 
-autoauto- [JavaScript 面试准备](#javascript-面试准备)auto - [数据类型](#数据类型)auto - [undefined vs null](#undefined-vs-null)auto - [Number 类型](#number-类型)auto - [NaN](#nan)auto - [parseInt()](#parseint)auto - [String](#string)auto - [`toString()` vs `String()`](#tostring-vs-string)auto - [`Object` 类型](#object-类型)auto - [运算符](#运算符)auto - [相等性](#相等性)auto - [`for-in` vs `for-of`](#for-in-vs-for-of)auto - [函数](#函数)auto - [函数的重载](#函数的重载)auto - [变量作用域和内存问题](#变量作用域和内存问题)auto - [执行环境以及作用域](#执行环境以及作用域)auto - [没有块级作用域！](#没有块级作用域)autoauto
+- [JavaScript 面试准备](#javascript-面试准备)
+- [数据类型](#数据类型)
+- [undefined vs null](#undefined-vs-null)
+- [Number 类型](#number-类型)
+- [NaN](#nan)
+- [parseInt()](#parseint)
+- [String](#string)
+- [`toString()` vs `String()`](#tostring-vs-string)
+- [`Object` 类型](#object-类型)
+- [运算符](#运算符)
+- [相等性](#相等性)
+- [`for-in` vs `for-of`](#for-in-vs-for-of)
+- [函数](#函数) - [函数的重载](#函数的重载)
+- [变量作用域和内存问题](#变量作用域和内存问题)
+- [执行环境以及作用域](#执行环境以及作用域)
+- [没有块级作用域！](#没有块级作用域)
 
 #### 数据类型
 
