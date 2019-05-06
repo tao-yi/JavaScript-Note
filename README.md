@@ -178,14 +178,29 @@ for (let key in obj) {
 
 因为对象的属性没有顺序，因此通过 `for-in` 循环输出的属性名顺序是不可预测的。
 
+> **不要用 for-in 去遍历数组，遍历得到的是索引，而不是具体的值。**
+
 `for-of`在可迭代对象（包括`Array`,`Map`,`Set`,`String`,`TypedArray`对象等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
 
 ```js
 let iterable = [10, 20, 30];
 for (let value of iterable) {
-  value += 1;
   console.log(value);
 }
+
+// output
+// 10
+// 20
+// 30
+
+for (let value in iterable) {
+  console.log("value is " + value);
+}
+
+// output
+// value is 0
+// value is 1
+// value is 2
 ```
 
 迭代 `String`

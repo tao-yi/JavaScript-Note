@@ -62,38 +62,43 @@ console.log(1 == true); // true
 console.log(5 == true); // false
 
 const obj = {
-	a: "value_a",
-	b: "value_b"
+  a: "value_a",
+  b: "value_b"
 };
 
 // for-in 用来枚举对象的属性，不要用来遍历数组
 for (let key in obj) {
-	console.log(`${key}: ${obj[key]}`);
+  console.log(`${key}: ${obj[key]}`);
 }
 
 let iterable = [10, 20, 30];
+
+for (let value in iterable) {
+  console.log("value is " + value);
+}
+
 for (let value of iterable) {
-	value += 1;
-	console.log(value);
+  value += 1;
+  console.log(value);
 }
 
 let str = "abcdefg";
 for (let value of str) {
-	console.log(value);
+  console.log(value);
 }
 
 let map = new Map([["a", 1], ["b", 2], ["c", 3]]);
 
 for (let entry of map) {
-	console.log(entry);
+  console.log(entry);
 }
 
 // ========================================================================================
 function dynamicArgs() {
-	console.log(arguments);
-	for (let arg of arguments) {
-		console.log(arg);
-	}
+  console.log(arguments);
+  for (let arg of arguments) {
+    console.log(arg);
+  }
 }
 
 dynamicArgs(1, 2, 3, "hello", "world");
@@ -101,13 +106,13 @@ dynamicArgs(1, 2, 3, "hello", "world");
 // ========================================================================================
 // Overloading
 function overloaded() {
-	if (arguments.length == 1) {
-		console.log(arguments[0] + 10);
-	} else if (arguments.length == 2) {
-		console.log(arguments[0] + arguments[1]);
-	} else {
-		console.log("invalid parameters");
-	}
+  if (arguments.length == 1) {
+    console.log(arguments[0] + 10);
+  } else if (arguments.length == 2) {
+    console.log(arguments[0] + arguments[1]);
+  } else {
+    console.log("invalid parameters");
+  }
 }
 
 overloaded(1);
