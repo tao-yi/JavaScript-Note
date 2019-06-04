@@ -1,3 +1,15 @@
+/**
+ * falsy值：
+ * 1. false
+ * 2. 0
+ * 3. ""
+ * 4. null
+ * 5. undefined
+ * 6. NaN
+ *
+ * 其他所有值都是真值。
+ */
+
 console.log(Boolean([])); // true
 console.log(Boolean(0)); // false
 console.log(Boolean[NaN]); // undefined
