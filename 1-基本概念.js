@@ -63,6 +63,18 @@ console.log(false == 0); // true
 console.log(1 == true); // true
 console.log(5 == true); // false
 
+// 类型判断 ===================================
+console.log(
+  typeof "o", // string
+  typeof 5, // number
+  typeof {}, // object
+  typeof [], // object
+  typeof false, // boolean
+  typeof NaN, // number
+  typeof undefined, // undefined
+  typeof null // object
+);
+
 const obj = {
   a: "value_a",
   b: "value_b"

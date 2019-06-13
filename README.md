@@ -47,6 +47,26 @@ if(document.all) // undefined
 
 ```
 
+#### 类型判断 typeof
+
+```js
+console.log(
+  typeof "o", // string
+  typeof 5, // number
+  typeof {}, // object
+  typeof [], // object
+  typeof false, // boolean
+  typeof NaN, // number
+  typeof undefined, // undefined
+  typeof null // object
+);
+
+const a = null;
+console.log(typeof a); // object
+```
+
+> 注意：null 的类型是 object，不是 null
+
 #### undefined vs null
 
 在使用 `var` 或者 `let` 声明变量但未对其加以初始化时，这个变量就是 `undefined`。
