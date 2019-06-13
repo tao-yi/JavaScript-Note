@@ -2,23 +2,25 @@ let message;
 var message1;
 console.log(typeof message); // undefined
 console.log(typeof message1); //undefined
-console.log(typeof undefinedVariable);
+console.log(typeof undefinedVariable); // undefined，注意这里不会报错
+console.log(typeof undefined); // undefined
 
 console.log(Boolean(message)); // false
 console.log(Boolean(0)); // false
 console.log(Boolean(null)); // false
 console.log(Boolean(1)); //true
 console.log(Boolean("helllo")); //true
-console.log(Boolean("")); // 任何非空字符串都会被转换成 true
+console.log(Boolean("")); // false, 任何非空字符串都会被转换成 true
 
 console.log(0.1 + 0.2); //0.30000000000000004
+console.log(0.1 + 0.2 == 0.3); // false
 
 console.log(NaN == NaN); // false
 
 console.log(isNaN(NaN)); // true
 console.log(isNaN("blue")); // true
-console.log(isNaN(true)); // false可以转换成数字1
-console.log(isNaN(false)); // false可以转换成数字0
+console.log(isNaN(true)); // false 可以转换成数字1
+console.log(isNaN(false)); // false 可以转换成数字0
 console.log(Number(false)); // 0
 console.log(isNaN("")); // false，可以转换成数字0
 console.log(Number("")); // 0

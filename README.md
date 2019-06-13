@@ -21,6 +21,32 @@
 
 6 种简单数据类型 `Undefined`, `Null`, `String`, `Number`, `Boolean`, `Symbol`。一种复杂数据类型 `Object`。Object 本质上是由一组无序的 key-value pair 组成。
 
+### Falsy 值
+
+在 JavaScript 中只有 6 个 falsy 值：
+
+- [x] false
+- [x] 0
+- [x] `""`, `''`, ``
+- [x] null
+- [x] undefined
+- [x] NaN
+
+除这 6 个值之外的全都是 truthy 值。
+
+```js
+if(false)
+if(null)
+if(undefined)
+if(0)
+if(0n) // undefined
+if('')
+if(``)
+if("")
+if(document.all) // undefined
+
+```
+
 #### undefined vs null
 
 在使用 `var` 或者 `let` 声明变量但未对其加以初始化时，这个变量就是 `undefined`。
