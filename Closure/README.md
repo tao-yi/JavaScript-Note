@@ -4,6 +4,26 @@
 
 > A closure is created when a function is returned from another function, retaining its original scope.
 
+当一个外部函数返回一个内部函数时，内部函数会保留它所在的外部函数的作用域。
+
+```js
+function foo(a) {
+  function bar(b) {
+    return a + b;
+  }
+  return bar;
+}
+
+var add3 = foo(3);
+
+console.log(add3(4));
+
+// 这里我们可以说 add3 持有一个闭包作用域
+// 它可以访问foo作用域中的所有变量
+```
+
+![image](./c1.png)
+
 注意最后一句：**retaining its original scope**
 
 ```js
