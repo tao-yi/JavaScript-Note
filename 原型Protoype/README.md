@@ -2,6 +2,48 @@
 
 ![image](./PrototypeFull.png)
 
+### 面试题
+
+```js
+var A = function() {};
+
+A.prototype.n = 1;
+
+var b = new A();
+A.prototype = {
+  n: 2,
+  m: 3
+};
+
+var c = new A();
+console.log(b.n, b.m, c.n, c.m);
+// 1, undefined, 2, 3
+```
+
+![image](./Q1.png);
+
+---
+
+```js
+var F = function() {};
+
+Object.prototype.a = function() {
+  console.log("a");
+};
+
+Function.prototype.b = function() {
+  console.log("b()");
+};
+
+var f = new F();
+f.a();
+// f.b(); 报错
+F.a();
+F.b();
+```
+
+![image](./Q2.png);
+
 ### 基于原型的语言
 
 JS 中 _每个对象拥有一个原型对象_ `__proto__`，对象以其原型为模板、从原型继承方法和属性。
