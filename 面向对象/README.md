@@ -245,3 +245,5 @@ The lookup time for properties that are high up on the prototype chain can have 
 ```js
 console.log(g.hasOwnProperty("vertices"));
 ```
+
+---

@@ -204,3 +204,7 @@ B.prototype.constructor = B;
 var b = new B();
 b.doSomething();
 ```
+
+---
+
+### 隐式遮蔽
