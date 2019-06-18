@@ -211,6 +211,16 @@ console.log(NaN == NaN);
 console.log(false == 0); // true
 console.log(1 == true); // true
 console.log(5 == true); // false
+console.log(2 == true); // false
+console.log(2 == false); // false
+
+if (2) {
+  console.log("2 is truthy");
+}
+
+if (1) {
+  console.log("1 is truthy");
+}
 ```
 
 #### `for-in` vs `for-of`

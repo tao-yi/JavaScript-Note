@@ -1,11 +1,5 @@
 ### 闭包
 
-一句话概述：
-
-> A closure is created when a function is returned from another function, retaining its original scope.
-
-当一个外部函数返回一个内部函数时，内部函数会保留它所在的外部函数的作用域。
-
 ```js
 function foo(a) {
   function bar(b) {
@@ -23,6 +17,17 @@ console.log(add3(4));
 ```
 
 ![image](./c1.png)
+
+在 `foo` 执行后，通常会期待 `foo()` 的整个内部作用域都被销毁，因为我们知道引擎有垃圾回收器用来释放不再使用的内存空间。然而闭包的神奇之处正是可以阻止这件事的发生。事实上内部作用域依然存在，因此没有被回收。谁在使用这个作用域？原来是 `bar()` 本身在使用。
+
+> 因为 bar 在 foo 的内部声明，它拥有涵盖 foo 内部作用域的闭包，使得该作用域能够一直存活，以供 `bar()` 在之后任何时间进行引用。
+> `bar()` 依然持有对该作用域的引用，而这个引用就叫做闭包。
+
+一句话概述：
+
+> A closure is created when a function is returned from another function, retaining its original scope.
+
+当一个外部函数返回一个内部函数时，内部函数会保留它所在的外部函数的作用域。
 
 注意最后一句：**retaining its original scope**
 
