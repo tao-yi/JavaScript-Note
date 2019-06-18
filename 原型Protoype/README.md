@@ -208,3 +208,32 @@ b.doSomething();
 ---
 
 ### 隐式遮蔽
+
+```js
+var anotherObject = {
+  a: 2
+};
+
+var myObject = Object.create(anotherObject);
+
+console.log(anotherObject.a);
+
+console.log(myObject.a);
+
+console.log(anotherObject.hasOwnProperty("a")); // true
+
+console.log(myObject.hasOwnProperty("a")); // false
+
+myObject.a++; // 隐式遮蔽
+
+console.log(anotherObject.a); // 2
+console.log(myObject.a); // 3
+```
+
+`myObject.a++` 相当于 `myObject.a = myObject.a + 1`因此 ++ 操作首先会通过原型链查找属性 a 并从 anotherObject.a 获取当前属性值 2，然后给这个值加 1，接着用 `[[Put]]` 将值 3 赋给 myObject 中新建的评屏蔽属性。
+
+### 类函数
+
+多年以来，JavaScript 中有一种奇怪的行为一直在被无耻地滥用，那就是模仿类。
+
+通过调用 `new Foo()`创建的每个对象将最终被 `[[Prototype]]` 链接到这个 `Foo.prototype` 对象。
