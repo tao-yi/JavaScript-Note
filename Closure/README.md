@@ -180,3 +180,75 @@ MyObject.prototype.getMessage = function() {
   return this.message;
 };
 ```
+
+```js
+function fn1() {
+  // 此时闭包就已经产生了(函数提升，内部函数对象已经创建了)
+  var a = 2;
+  function fn2() {
+    a++;
+    console.log(a);
+  }
+  return fn2;
+}
+
+var f1 = fn1();
+var f2 = fn1();
+f1(); // 3
+f1(); // 4
+f2(); // 3
+f2(); // 4
+
+// 函数执行完成后，函数内的局部变量没有释放
+f1 = null; // 需要手动释放闭包占用的内存
+f2 = null;
+```
+
+### 闭包的生命周期
+
+- 产生：在嵌套内部函数定义执行完成时就产生了，不是在调用时
+- 死亡：在嵌套的内部函数成为垃圾对象时
+
+---
+
+### 闭包的作用：1.创建自定义模块
+
+```js
+function myModule() {
+  // 私有数据
+  var msg = "my msg";
+  // 操作数据的方法
+  function fn1() {
+    console.log("fn1() " + msg.toUpperCase());
+  }
+  function fn2() {
+    console.log("fn2() " + msg.toLowerCase());
+  }
+  // 向外暴露一个对象，包含API
+  return {
+    fn1,
+    fn2
+  };
+}
+```
+
+第二种方式:
+
+```js
+(function() {
+  var msg = "data";
+  function toLowerCase() {
+    console.log("lower() " + msg.toLowerCase());
+  }
+  function toUpperCase() {
+    console.log("Upper() " + msg.toUpperCase());
+  }
+  window.$ = {
+    toLowerCase,
+    toUpperCase
+  };
+})();
+// 模拟jQuery的包
+$.toLowerCase();
+$.toUpperCase();
+```
