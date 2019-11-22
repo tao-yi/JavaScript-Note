@@ -135,6 +135,28 @@ console.log(Number("")); // 0
 
 由于 `Number()` 函数在转换字符串时比较复杂而且不够合理，因此在处理整数的时候更常用的是 `parseInt()` 函数。 `parseInt()` 函数在转换字符串时，更多的是看起是否符合数值模式。它会忽略字符串前面的空格，直至找到第一个非空格字符。
 
+`Number()` 的一些迷惑行为
+
+```
+Number(null) => 0
+Number(false) => 0
+Number(true) => 1
+Number('') => 0 // 这个实在无法理解
+Number([]) => 0 // 这个更加无法理解
+Number(undefined) => undefined 这个还算正常
+```
+`parseInt()` 的行为全部正常，全都返回NaN
+```js
+console.log(parseInt(null))
+console.log(parseInt(undefined))
+console.log(parseInt(false))
+console.log(parseInt(true))
+console.log(parseInt(''))
+console.log(parseInt([]))
+console.log(parseInt({}))
+console.log(parseInt(NaN)
+```
+
 **如果第一个字符不是数字字符或者负号，就会直接返回 `NaN`**。如果第一个字符是数字字符，`parseInt()` 会继续解析第二个字符，直到解析完所有的后续字符或者遇到一个非数字字符为止。
 
 ```js
